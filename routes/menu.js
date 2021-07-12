@@ -5,6 +5,7 @@ const MenuController = require('../controllers/menuController')
 const upload = require('../middleware/upload')
 const authenticate = require('../middleware/authenticate')
 
+
 router.get('/',authenticate, MenuController.index)
 router.post('/show', MenuController.show)
 router.post('/store', upload.array('picture[]'),MenuController.store)
