@@ -17,7 +17,7 @@ function _access_token (req, res, next) {
     .headers({'Authorization': auth})
     .send()
     .then((response) => {
-        req.access_token = response.body.access_token
+        // req.access_token = response.body.access_token
         console.log(response.body)
         next()
     }).catch((err) =>{console.log(err)})

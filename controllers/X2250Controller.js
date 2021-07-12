@@ -2,7 +2,7 @@
 
 
 const _getTokens = (req, res)=>{
-  res.status(200).json({message: req.access_token})
+  res.status(200).json({message: req.body})
  
 }
 // confirmation url
