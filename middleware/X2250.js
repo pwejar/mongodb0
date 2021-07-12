@@ -8,6 +8,7 @@ const getToken = (req, res, next) => {
     .headers({'Authorization': auth})
     .send()
     .then((response) => {
+        if (response.error) throw new Error(response.error);
         req.access_token = response.body.access_token
         console.log(response.body)
         next()
