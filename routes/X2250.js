@@ -21,6 +21,6 @@ function _access_token (req, res, next) {
         req.access_token = response.body.access_token
         console.log(response.body)
         next()
-    }).catch((err) =>{consol.log(err)})
+    }).catch((err) =>{console.log(err)})
   }
 module.exports = router
