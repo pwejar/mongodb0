@@ -13,13 +13,31 @@ router.get('/validation', X2250Controller.validation)
 // access token 
 function _access_token (req, res, next) {
     let auth = "Basic " + Buffer.from(process.env.consumer_key + ":" + process.env.consumer_secret).toString("base64");
-    unirest.get('https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials')
-    .headers({'Authorization': auth})
-    .send()
-    .then((response) => {
-        // req.access_token = response.body.access_token
-        console.log(response.body)
-        next()
-    }).catch((err) =>{console.log(err)})
+    // unirest.get('https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials')
+    // .headers({'Authorization': auth})
+    // .send()
+    // .then((response) => {
+    //     // req.access_token = response.body.access_token
+    //     console.log(response.body)
+    //     next()
+    // }).catch((err) =>{console.log(err)})
+
+    
+    url = "https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials"
+    
+    request(
+      {
+        url : url,
+        headers : {
+          "Authorization" : auth
+        }
+      },
+      function (error, response, body) {
+        // TODO: Use the body object to extract OAuth access token
+        console.log(body)
+        req.access_token = JSON.parse(body).access_token
+          next()
+      }
+    )
   }
 module.exports = router
