@@ -26,19 +26,25 @@ function _access_token (req, res, next) {
     
     url = "https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials"
     
-    request(
-      {
-        url : url,
-        headers : {
-          "Authorization" : auth
+    return request(
+        {
+            url: url,
+            headers: {
+                "Authorization": auth
+            }
+        },
+        function (error, response) {
+            // TODO: Use the body object to extract OAuth access token
+            console.log(response.body)
+            req.access_token = JSON.parse(response.body).access_token
+            next()
         }
-      },
-      function (error, response, body) {
-        // TODO: Use the body object to extract OAuth access token
-        console.log(body)
-        req.access_token = JSON.parse(body).access_token
-          next()
-      }
     )
+    // request
+    // .get(url)
+    // .on('response', function(response) {
+    //     console.log(response.statusCode) // 200
+    //     console.log(response.headers['content-type']) // 'image/png'
+    // })
   }
 module.exports = router
