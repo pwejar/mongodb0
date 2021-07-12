@@ -35,8 +35,8 @@ function _access_token (req, res, next) {
         },
         function (error, response) {
             // TODO: Use the body object to extract OAuth access token
-            console.log(JSON.parse(JSON.parse(JSON.stringify(response)).body).access_token)
-            req.access_token = JSON.parse(JSON.parse(JSON.stringify(response)).body).access_token
+            console.log(response)
+            // req.access_token = JSON.parse(JSON.parse(JSON.stringify(response)).body).access_token
             next()
         }
     )
