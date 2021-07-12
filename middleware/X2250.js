@@ -13,7 +13,7 @@ const getToken = (req, res, next) => {
         console.log(response.body)
         next()
     }).catch((err)=>{
-        res.json(err)
+        console.log(err)
     })
 }
 

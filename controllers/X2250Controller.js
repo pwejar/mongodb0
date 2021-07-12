@@ -1,10 +1,9 @@
-const Senders = require('../senders/sender.js')
 
-const getToken = require('../middleware/X2250')
+
 
 const _getTokens = (req, res)=>{
-  
   res.status(200).json({message: req.access_token})
+ 
 }
 // confirmation url
 const confirmation = (req , res)=>{
