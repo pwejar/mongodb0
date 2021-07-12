@@ -1,5 +1,6 @@
 var unirest = require('unirest');
-require('dotenv').config()
+
+
 const getToken = (req, res, next) => {
 
     let auth = "Basic " + Buffer.from(process.env.consumer_key + ":" + process.env.consumer_secret).toString("base64");
