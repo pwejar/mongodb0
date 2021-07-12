@@ -1,8 +1,8 @@
 const Senders = require('../senders/sender.js')
 
+const getToken = require('../middleware/X2250')
 
-
-const getTokens = (req, res)=>{
+const _getTokens = (req, res)=>{
   
   res.status(200).json({message: req.access_token})
 }
@@ -53,5 +53,5 @@ const validation = (req , res)=>{
 }
 
 module.exports = {
-  getTokens,confirmation, validation
+  _getTokens,confirmation, validation
 }
