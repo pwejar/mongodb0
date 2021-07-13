@@ -12,8 +12,6 @@ const getToken = (req, res, next) => {
         req.access_token = response.body.access_token
         console.log(response.body)
         next()
-    }).catch((err)=>{
-        console.log(err)
     })
 }
 

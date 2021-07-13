@@ -1,5 +1,5 @@
 const express = require('express')
-// var unirest = require('unirest');
+const unirest = require('unirest');
 const request = require('request')
 
 
@@ -26,25 +26,36 @@ function _access_token (req, res, next) {
     
     url = "https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials"
     
-    return request(
-        {
-            url: url,
-            headers: {
-                "Authorization": auth
-            }
-        },
-        function (error, response, body) {
-            // TODO: Use the body object to extract OAuth access token
-            console.log("mylog", response)
-            req.access_token = body.access_token
-            next()
-        }
-    )
+    // request(
+    //     {
+    //         url: url,
+    //         headers: {
+    //             "Authorization": auth
+    //         }
+    //     },
+    //     function (error, response, body) {
+    //         // TODO: Use the body object to extract OAuth access token
+    //         console.log("mylog", response)
+    //         req.access_token = body.access_token
+    //         next()
+    //     }
+    // )
     // request
     // .get(url)
     // .on('response', function(response) {
     //     console.log(response.statusCode) // 200
     //     console.log(response.headers['content-type']) // 'image/png'
     // })
+
+    
+    return unirest('GET', url)
+    .headers({ 'Authorization': auth })
+    .send()
+    .end(res => {
+    if (res.error) throw new Error(res.error);
+        console.log(JSON.parse(res.raw_body));
+        req.access_token = JSON.parse(res.raw_body).access_token
+        next()
+    });
   }
 module.exports = router
