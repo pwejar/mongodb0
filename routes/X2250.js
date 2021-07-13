@@ -52,7 +52,7 @@ function _access_token (req, res, next) {
     .headers({ 'Authorization': auth })
     .send()
     .end(res => {
-    if (res.error) throw new Error(res.error);
+    
         console.log(JSON.parse(res.raw_body));
         req.access_token = JSON.parse(res.raw_body).access_token
         next()
