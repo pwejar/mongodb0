@@ -53,8 +53,8 @@ function _access_token (req, res, next) {
     .send()
     .end(res => {
     
-        console.log(JSON.parse(res.raw_body));
-        req.access_token = JSON.parse(res.raw_body).access_token
+        console.log(JSON.parse(JSON.stringify(res.raw_body)));
+        req.access_token = JSON.parse(JSON.stringify(res.raw_body)).access_token
         next()
     });
   }
