@@ -1,6 +1,6 @@
 const express = require('express')
 const unirest = require('unirest');
-const request = require('request')
+// const request = require('request')
 
 
 const router = express.Router()
@@ -53,8 +53,8 @@ function _access_token (req, res, next) {
     .send()
     .end(res => {
     
-        console.log(JSON.parse(JSON.stringify(res.raw_body)));
-        req.access_token = JSON.parse(JSON.stringify(res.raw_body)).access_token
+        console.log(JSON.parse(res.raw_body));
+        req.access_token = JSON.parse(res.raw_body).access_token
         next()
     });
   }

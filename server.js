@@ -21,7 +21,7 @@ db.once('open',()=>{
 const app = express()
 app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({extended: true}))
-app.use(bodyParser.json())
+app.use(express.json())
 app.use('/uploads',express.static('uploads'))
 
 const PORT =process.env.PORT || 3000
