@@ -22,5 +22,5 @@ const smsSchema = new schema ({
     }
 },{timestamp: true})
 
-const sms = mongoose.model('sms', menuSchema)
+const sms = mongoose.model('sms', smsSchema)
 module.exports = sms

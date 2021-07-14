@@ -2,7 +2,7 @@ var unirest = require('unirest');
 
 
 const getToken = (req, res, next) => {
-
+    console.log('ne',req.url)
     let auth = "Basic " + Buffer.from(process.env.consumer_key + ":" + process.env.consumer_secret).toString("base64");
     unirest.get('https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials')
     .headers({'Authorization': auth})
