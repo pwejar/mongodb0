@@ -1,7 +1,8 @@
 const express = require('express')
 const unirest = require('unirest');
+var multer  = require('multer')
 // const request = require('request')
-
+var upload = multer({ dest: './public/data/uploads/' })
 
 const router = express.Router()
 
