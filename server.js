@@ -6,7 +6,7 @@ require('dotenv').config()
 const MenuRoute = require('./routes/menu')
 const AuthRoute = require('./routes/auth')
 const X2250Route = require('./routes/X2250')
-const SmsRoute = require('./routes/sms')
+const SmsRoute = require('./controllers/sms')
 
 // mongodb+srv://user0:<password>@db000001.f7dhn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
 mongoose.connect('mongodb+srv://user0:H5YEcZMT5d3XsWk@db000001.f7dhn.mongodb.net/mabuhay?retryWrites=true&w=majority',{useNewUrlParser:true, useUnifiedTopology: true})
