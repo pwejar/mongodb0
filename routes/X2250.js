@@ -54,8 +54,8 @@ function _access_token (req, res, next) {
     .send()
     .end(res => {
     
-        console.log(res.raw_body);
-        req.access_token = res.raw_body.access_token
+        console.log(res.body);
+        req.access_token = res.body.access_token
         next()
     });
   }
