@@ -1,15 +1,15 @@
 const express = require('express')
 const unirest = require('unirest');
-var multer  = require('multer')
+
 // const request = require('request')
-var upload = multer({ dest: './public/data/uploads/' })
+const access_token= require('../middleware/X2250')
 
 const router = express.Router()
 
 const X2250Controller = require('../controllers/X2250Controller')
 // const getToken = require('../middleware/X2250')
 
-router.get('/get_tokens',_access_token, X2250Controller._getTokens)
+router.get('/get_tokens',access_token, X2250Controller._getTokens)
 router.get('/confirmation', X2250Controller.confirmation)
 router.get('/validation', X2250Controller.validation)
 // access token 
